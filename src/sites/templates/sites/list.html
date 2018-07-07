@@ -1,0 +1,10 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<h1>Sites</h1>
+<ul class="list-group">
+  {% for site in sites %}
+    <li class="list-group-item"><a href="/sites/{{ site.id }}">{{ site.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
