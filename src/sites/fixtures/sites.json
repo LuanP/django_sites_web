@@ -1,0 +1,83 @@
+[
+{
+  "model": "sites.site",
+  "pk": 1,
+  "fields": {
+    "title": "Demo Site"
+  }
+},
+{
+  "model": "sites.site",
+  "pk": 2,
+  "fields": {
+    "title": "ABC Site"
+  }
+},
+{
+  "model": "sites.site",
+  "pk": 3,
+  "fields": {
+    "title": "XYZ Site"
+  }
+},
+{
+  "model": "sites.siterecord",
+  "pk": 1,
+  "fields": {
+    "site": 1,
+    "date": "2018-07-07",
+    "a": "12.00",
+    "b": "16.00"
+  }
+},
+{
+  "model": "sites.siterecord",
+  "pk": 2,
+  "fields": {
+    "site": 1,
+    "date": "2018-07-07",
+    "a": "20.00",
+    "b": "100.00"
+  }
+},
+{
+  "model": "sites.siterecord",
+  "pk": 3,
+  "fields": {
+    "site": 1,
+    "date": "2018-07-07",
+    "a": "20.00",
+    "b": "80.00"
+  }
+},
+{
+  "model": "sites.siterecord",
+  "pk": 4,
+  "fields": {
+    "site": 2,
+    "date": "2018-07-07",
+    "a": "5.00",
+    "b": "15.00"
+  }
+},
+{
+  "model": "sites.siterecord",
+  "pk": 5,
+  "fields": {
+    "site": 3,
+    "date": "2018-07-07",
+    "a": "5.00",
+    "b": "15.00"
+  }
+},
+{
+  "model": "sites.siterecord",
+  "pk": 6,
+  "fields": {
+    "site": 3,
+    "date": "2018-07-07",
+    "a": "5.00",
+    "b": "15.00"
+  }
+}
+]
