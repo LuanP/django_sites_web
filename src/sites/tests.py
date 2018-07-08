@@ -48,8 +48,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-          '<li class="nav-item active">\n        <a class="nav-link" href="/sites">Sites</a>',
-          html
+            '<li class="nav-item active">\n        <a class="nav-link" href="/sites">Sites</a>',
+            html
         )
 
     def test_sites_list_nav_is_not_active_in_summary_sum(self):
@@ -57,8 +57,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-          '<li class="nav-item">\n        <a class="nav-link" href="/sites">Sites</a>',
-          html
+            '<li class="nav-item">\n        <a class="nav-link" href="/sites">Sites</a>',
+            html
         )
 
     def test_sites_list_nav_is_not_active_in_summary_average(self):
@@ -66,8 +66,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-          '<li class="nav-item">\n        <a class="nav-link" href="/sites">Sites</a>',
-          html
+            '<li class="nav-item">\n        <a class="nav-link" href="/sites">Sites</a>',
+            html
         )
 
     def test_sites_summary_sum_nav_is_active(self):
@@ -75,8 +75,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-          '<li class="nav-item active">\n        <a class="nav-link" href="/summary">Summary</a>',
-          html
+            '<li class="nav-item active">\n        <a class="nav-link" href="/summary">Summary</a>',
+            html
         )
 
     def test_sites_summary_average_nav_is_active(self):
@@ -84,6 +84,42 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-          '<li class="nav-item active">\n        <a class="nav-link" href="/summary">Summary</a>',
-          html
+            '<li class="nav-item active">\n        <a class="nav-link" href="/summary">Summary</a>',
+            html
+        )
+
+    def test_summary_sum_active_link(self):
+        response = self.client.get(reverse('sites:summary_sum'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+            '<a href="/summary"><button type="button" class="btn btn-primary active">Sum</button></a',
+            html
+        )
+
+    def test_summary_sum_average_is_not_active_link(self):
+        response = self.client.get(reverse('sites:summary_sum'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+            '<a href="/summary-average"><button type="button" class="btn btn-primary">Average</button></a',
+            html
+        )
+
+    def test_summary_average_active_link(self):
+        response = self.client.get(reverse('sites:summary_average'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+            '<a href="/summary-average"><button type="button" class="btn btn-primary active">Average</button></a',
+            html
+        )
+
+    def test_summary_average_sum_is_not_active_link(self):
+        response = self.client.get(reverse('sites:summary_average'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+            '<a href="/summary"><button type="button" class="btn btn-primary">Sum</button></a',
+            html
         )

@@ -1,10 +1,13 @@
 {% extends "base/base.html" %}
 
 {% block content %}
+  {% url "sites:summary_sum" as sites_summary_sum %}
+  {% url "sites:summary_average" as sites_summary_average %}
+
   <h1>Summary</h1>
   
-  <a href="{% url "sites:summary_sum" %}"><button type="button" class="btn btn-primary active">Sum</button></a>
-  <a href="{% url "sites:summary_average" %}"><button type="button" class="btn btn-primary">Average</button></a>
+  <a href="{{ sites_summary_sum }}"><button type="button" class="btn btn-primary{% if request.get_full_path == sites_summary_sum %} active{% endif %}">Sum</button></a>
+  <a href="{{ sites_summary_average }}"><button type="button" class="btn btn-primary{% if request.get_full_path == sites_summary_average %} active{% endif %}">Average</button></a>
 
   <table class="table">
     <thead>
