@@ -1,4 +1,4 @@
-from django.db.models import Sum, Avg
+from django.db.models import Sum
 from django.views import generic
 
 from .models import Site
@@ -37,9 +37,19 @@ class SiteSummaryAverageTemplateView(generic.TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['sites'] = Site.objects.all().annotate(
-            result_a=Avg('siterecord__a'),
-            result_b=Avg('siterecord__b')
-        )
+
+        # context['sites'] = Site.objects.all().annotate(
+        #     result_a=Avg('siterecord__a'),
+        #     result_b=Avg('siterecord__b')
+        # )
+        context['sites'] = Site.objects.raw('''
+            SELECT "sites_site"."id",
+                   "sites_site"."title",
+                   AVG("sites_siterecord"."a") AS "result_a",
+                   AVG("sites_siterecord"."b") AS "result_b"
+            FROM "sites_site"
+            LEFT OUTER JOIN "sites_siterecord" ON ("sites_site"."id" = "sites_siterecord"."site_id")
+            GROUP BY "sites_site"."id"
+        ''')
 
         return context
