@@ -52,6 +52,15 @@ class TestSite(TestCase):
             html
         )
 
+    def test_sites_list_nav_is_active_in_site_detail(self):
+        response = self.client.get(reverse('sites:detail', kwargs={'id': 1}))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+            '<li class="nav-item active">\n        <a class="nav-link" href="/sites">Sites</a>',
+            html
+        )
+
     def test_sites_list_nav_is_not_active_in_summary_sum(self):
         response = self.client.get(reverse('sites:summary_sum'))
         html = response.content.decode('utf8')
