@@ -42,3 +42,48 @@ class TestSite(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'sites/summary.html')
+
+    def test_sites_list_nav_is_active(self):
+        response = self.client.get(reverse('sites:list'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+          '<li class="nav-item active">\n        <a class="nav-link" href="/sites">Sites</a>',
+          html
+        )
+
+    def test_sites_list_nav_is_not_active_in_summary_sum(self):
+        response = self.client.get(reverse('sites:summary_sum'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+          '<li class="nav-item">\n        <a class="nav-link" href="/sites">Sites</a>',
+          html
+        )
+
+    def test_sites_list_nav_is_not_active_in_summary_average(self):
+        response = self.client.get(reverse('sites:summary_average'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+          '<li class="nav-item">\n        <a class="nav-link" href="/sites">Sites</a>',
+          html
+        )
+
+    def test_sites_summary_sum_nav_is_active(self):
+        response = self.client.get(reverse('sites:summary_sum'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+          '<li class="nav-item active">\n        <a class="nav-link" href="/summary">Summary</a>',
+          html
+        )
+
+    def test_sites_summary_average_nav_is_active(self):
+        response = self.client.get(reverse('sites:summary_average'))
+        html = response.content.decode('utf8')
+
+        self.assertIn(
+          '<li class="nav-item active">\n        <a class="nav-link" href="/summary">Summary</a>',
+          html
+        )

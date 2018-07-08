@@ -1,11 +1,15 @@
+{% url "sites:list" as sites_list %}
+{% url "sites:summary_sum" as sites_summary_sum %}
+{% url "sites:summary_average" as sites_summary_average %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="collapse navbar-collapse" id="navbar">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url "sites:list" %}">Sites</a>
+      <li class="nav-item{% if request.get_full_path == sites_list %} active{% endif %}">
+        <a class="nav-link" href="{{ sites_list }}">Sites</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url "sites:summary_sum" %}">Summary</a>
+      <li class="nav-item{% if request.get_full_path == sites_summary_sum or request.get_full_path == sites_summary_average %} active{% endif %}">
+        <a class="nav-link" href="{{ sites_summary_sum }}">Summary</a>
       </li>
     </ul>
   </div>
