@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.views import generic
 
 from .models import Site
@@ -16,3 +17,16 @@ class SiteDetailView(generic.DetailView):
     template_name = 'sites/detail.html'
     context_object_name = 'site'
     pk_url_kwarg = 'id'
+
+
+class SiteSummaryTemplateView(generic.TemplateView):
+    template_name = 'sites/summary.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['sites'] = Site.objects.all().annotate(
+            sum_a=Sum('siterecord__a'),
+            sum_b=Sum('siterecord__b')
+        )
+
+        return context
