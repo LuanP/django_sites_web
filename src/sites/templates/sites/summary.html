@@ -3,7 +3,8 @@
 {% block content %}
   <h1>Summary</h1>
   
-  <a href="{% url "sites:summary" %}"><button type="button" class="btn btn-primary active">Sum</button></a>
+  <a href="{% url "sites:summary_sum" %}"><button type="button" class="btn btn-primary active">Sum</button></a>
+  <a href="{% url "sites:summary_average" %}"><button type="button" class="btn btn-primary">Average</button></a>
 
   <table class="table">
     <thead>
@@ -16,8 +17,8 @@
       {% for site in sites %}
         <tr>
           <td>{{ site.title }}</td>
-          <td>{{ site.sum_a }}</td>
-          <td>{{ site.sum_b }}</td>
+          <td>{{ site.sum_a|floatformat:2 }}</td>
+          <td>{{ site.sum_b|floatformat:2 }}</td>
         </tr>
       {% endfor %}
     </tbody>

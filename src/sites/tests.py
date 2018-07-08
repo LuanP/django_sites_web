@@ -32,7 +32,13 @@ class TestSite(TestCase):
         self.assertTemplateUsed(response, 'sites/detail.html')
 
     def test_summary(self):
-        response = self.client.get(reverse('sites:summary'))
+        response = self.client.get(reverse('sites:summary_sum'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'sites/summary.html')
+
+    def test_summary_average(self):
+        response = self.client.get(reverse('sites:summary_average'))
 
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'sites/summary.html')
