@@ -25,8 +25,8 @@ class SiteSummarySumTemplateView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['sites'] = Site.objects.all().annotate(
-            sum_a=Sum('siterecord__a'),
-            sum_b=Sum('siterecord__b')
+            result_a=Sum('siterecord__a'),
+            result_b=Sum('siterecord__b')
         )
 
         return context
@@ -38,8 +38,8 @@ class SiteSummaryAverageTemplateView(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['sites'] = Site.objects.all().annotate(
-            sum_a=Avg('siterecord__a'),
-            sum_b=Avg('siterecord__b')
+            result_a=Avg('siterecord__a'),
+            result_b=Avg('siterecord__b')
         )
 
         return context
