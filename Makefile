@@ -1,11 +1,11 @@
 lint:
-	flake8 --exclude=migrations,settings.py src/
+	flake8 --exclude=migrations,settings.py,test_settings.py src/
 
 test:
 	make lint && make coverage
 
 coverage:
-	coverage run --source='./src' src/manage.py test
+	export DJANGO_SETTINGS_MODULE="django_sites_web.test_settings" && coverage run --source='./src' src/manage.py test
 
 report:
 	coverage report
