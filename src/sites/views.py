@@ -48,7 +48,8 @@ class SiteSummaryAverageTemplateView(generic.TemplateView):
                    AVG("sites_siterecord"."a") AS "result_a",
                    AVG("sites_siterecord"."b") AS "result_b"
             FROM "sites_site"
-            LEFT OUTER JOIN "sites_siterecord" ON ("sites_site"."id" = "sites_siterecord"."site_id")
+            LEFT OUTER JOIN "sites_siterecord" ON
+                ("sites_site"."id" = "sites_siterecord"."site_id")
             GROUP BY "sites_site"."id"
         ''')
 

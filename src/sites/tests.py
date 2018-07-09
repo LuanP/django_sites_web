@@ -21,7 +21,9 @@ class TestSite(TestCase):
         self.assertTemplateUsed(response, 'sites/list.html')
 
     def test_site_detail_not_found(self):
-        response = self.client.get(reverse('sites:detail', kwargs={'id': 9999}))
+        response = self.client.get(
+            reverse('sites:detail', kwargs={'id': 9999})
+        )
 
         self.assertEqual(response.status_code, 404)
 
@@ -48,7 +50,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<li class="nav-item active">\n        <a class="nav-link" href="/sites">Sites</a>',
+            '<li class="nav-item active">\n        '
+            '<a class="nav-link" href="/sites">Sites</a>',
             html
         )
 
@@ -57,7 +60,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<li class="nav-item active">\n        <a class="nav-link" href="/sites">Sites</a>',
+            '<li class="nav-item active">\n        '
+            '<a class="nav-link" href="/sites">Sites</a>',
             html
         )
 
@@ -66,7 +70,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<li class="nav-item">\n        <a class="nav-link" href="/sites">Sites</a>',
+            '<li class="nav-item">\n        '
+            '<a class="nav-link" href="/sites">Sites</a>',
             html
         )
 
@@ -75,7 +80,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<li class="nav-item">\n        <a class="nav-link" href="/sites">Sites</a>',
+            '<li class="nav-item">\n        '
+            '<a class="nav-link" href="/sites">Sites</a>',
             html
         )
 
@@ -84,7 +90,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<li class="nav-item active">\n        <a class="nav-link" href="/summary">Summary</a>',
+            '<li class="nav-item active">\n        '
+            '<a class="nav-link" href="/summary">Summary</a>',
             html
         )
 
@@ -93,7 +100,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<li class="nav-item active">\n        <a class="nav-link" href="/summary">Summary</a>',
+            '<li class="nav-item active">\n        '
+            '<a class="nav-link" href="/summary">Summary</a>',
             html
         )
 
@@ -102,7 +110,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<a href="/summary"><button type="button" class="btn btn-primary active">Sum</button></a',
+            '<a href="/summary"><button type="button" '
+            'class="btn btn-primary active">Sum</button></a',
             html
         )
 
@@ -111,7 +120,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<a href="/summary-average"><button type="button" class="btn btn-primary">Average</button></a',
+            '<a href="/summary-average"><button type="button" '
+            'class="btn btn-primary">Average</button></a',
             html
         )
 
@@ -120,7 +130,8 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<a href="/summary-average"><button type="button" class="btn btn-primary active">Average</button></a',
+            '<a href="/summary-average"><button type="button" '
+            'class="btn btn-primary active">Average</button></a',
             html
         )
 
@@ -129,6 +140,7 @@ class TestSite(TestCase):
         html = response.content.decode('utf8')
 
         self.assertIn(
-            '<a href="/summary"><button type="button" class="btn btn-primary">Sum</button></a',
+            '<a href="/summary"><button type="button" class="btn btn-primary">'
+            'Sum</button></a',
             html
         )

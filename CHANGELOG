@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- Makefile
+- git hooks
 - active behaviors in navs and buttons
 - sites summary with average of values
 - sites summary with sum of values
