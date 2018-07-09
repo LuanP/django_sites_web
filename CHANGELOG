@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
+- README file
+- travis CI / coveralls
 - settings by env variables with django-environ
 - test settings
 - docker / docker-compose

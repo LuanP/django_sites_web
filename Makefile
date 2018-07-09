@@ -5,7 +5,7 @@ test:
 	make lint && make coverage
 
 coverage:
-	export DJANGO_SETTINGS_MODULE="django_sites_web.test_settings" && coverage run --source='./src' src/manage.py test
+	export DJANGO_SETTINGS_MODULE="django_sites_web.test_settings" && coverage run --source='./src' --omit='**/tests.py' src/manage.py test
 
 report:
 	coverage report
