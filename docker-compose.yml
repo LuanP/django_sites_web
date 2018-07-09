@@ -21,6 +21,8 @@ services:
       DB_PORT: 5432
       DB_USERNAME: sites
       DB_PASSWORD: sites
+      SECRET_KEY: "@%%-!e^mzb0f)l5gk^a#04!("
+      DEBUG: "True"
     ports:
       - "8000:8000"
     links:
