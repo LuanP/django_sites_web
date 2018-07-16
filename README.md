@@ -16,7 +16,6 @@ The task is to develop an application as shown on http://applicationtask.herokua
 - [Background](#background)
 - [Install](#install)
 - [Usage](#usage)
-- [API](#api)
 - [Contribute](#contribute)
 - [License](#license)
 
